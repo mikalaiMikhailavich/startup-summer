@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 773px;
+  border: 1px solid black;
+  padding: 24px;
+}
+.mainInfo {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+.salaryInfo {
+  display: flex;
+  align-items: center;
+}
