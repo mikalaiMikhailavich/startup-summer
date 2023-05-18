@@ -8,6 +8,7 @@ import {
 import { Catalogue } from "../../App";
 import { RootState } from "../store";
 import { setTokens } from "../reducers/auth";
+import { IObjectResponse } from "../../types/types";
 
 const URL = `https://startup-summer-2023-proxy.onrender.com/2.0/`;
 const X_SECRET_KEY = `GEU4nvd3rej*jeh.eqp`;
@@ -91,7 +92,7 @@ export const apiSlice = createApi({
       query: (id) => `vacancies/${id}/`,
     }),
 
-    getVacanciesData: build.query<any, any>({
+    getVacanciesData: build.query<IObjectResponse, any>({
       query: ({
         page,
         catalogueValue,

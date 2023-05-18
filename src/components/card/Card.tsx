@@ -1,27 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { Favorite } from "../icons/Favorite";
 import styles from "./Card.module.scss";
+import { ICardData } from "../../types/types";
+
 interface IProps {
-  id: string;
-  profession: string;
-  firm_name?: string;
-  townTitle?: string;
-  typeOfWorkTitle?: string;
-  payment_to?: string;
-  payment_from?: string;
-  currency?: string;
+  data: ICardData;
 }
 
 const Card = (props: IProps) => {
   const navigate = useNavigate();
   const {
-    id,
-    profession,
-    townTitle,
-    typeOfWorkTitle,
-    payment_from,
-    payment_to,
-    currency,
+    data: {
+      id,
+      profession,
+      town,
+      type_of_work,
+      payment_from,
+      payment_to,
+      currency,
+    },
   } = props;
 
   return (
@@ -43,10 +40,10 @@ const Card = (props: IProps) => {
               : `от ${payment_from} - до ${payment_to} ${currency}`}
           </p>
           <span className={styles.dot}>•</span>
-          <p>{typeOfWorkTitle}</p>
+          <p>{type_of_work?.title}</p>
         </div>
 
-        <p>{townTitle}</p>
+        <p>{town?.title}</p>
       </div>
       <div>
         <Favorite isFavorite={false} />

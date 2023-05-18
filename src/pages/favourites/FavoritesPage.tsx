@@ -11,7 +11,6 @@ const FavoritesPage = () => {
   const [activePage, setPage] = useState(1);
 
   const { data, isFetching } = useGetFavoritesQuery(fabSplitted);
-  console.log(data);
   const vacanciesOnPage = 4;
 
   const totalVacancies = data?.total;
@@ -32,19 +31,7 @@ const FavoritesPage = () => {
                 </div>
               ) : (
                 data?.objects.map((elem: any, index: any) => {
-                  return (
-                    <Card
-                      key={index}
-                      id={elem.id}
-                      profession={elem.profession}
-                      firm_name={elem.firm_name}
-                      townTitle={elem.town?.title}
-                      typeOfWorkTitle={elem?.type_of_work.title}
-                      payment_from={elem?.payment_from}
-                      payment_to={elem?.payment_to}
-                      currency={elem?.currency}
-                    />
-                  );
+                  return <Card key={elem.id} data={elem} />;
                 })
               )}
             </div>

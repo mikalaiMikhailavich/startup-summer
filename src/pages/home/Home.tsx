@@ -1,6 +1,6 @@
 import { Loader, Pagination } from "@mantine/core";
 import { useAppSelector } from "../../store/hooks";
-import { useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { useGetVacanciesDataQuery } from "../../store/requests/api";
 import Card from "../../components/card/Card";
 import { Form } from "../../components/form/Form";
@@ -9,9 +9,10 @@ import { totalPages } from "../../services/totalPages";
 
 const Home = () => {
   const { industrySelect, salaryFrom, salaryTo } = useAppSelector(
-    (state: any) => state.filter
+    (state) => state.filter
   );
-
+  const [inputText, setInputText] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [activePage, setPage] = useState(1);
 
   useEffect(() => {
@@ -27,8 +28,11 @@ const Home = () => {
     catalogueValue: industrySelect,
     salaryFrom,
     salaryTo,
+    keyword: searchValue,
   });
+
   const totalPage = totalPages(data?.total);
+  console.log(data);
 
   return (
     <div className="container">
@@ -36,27 +40,26 @@ const Home = () => {
         <Form setPage={setPage} />
         <div className={styles.cards}>
           <div className={styles.cardsWrapper}>
-            <input type="text" name="" id="" />
-            <input type="button" name="" id="" />
+            <input
+              type="text"
+              name="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+            />
+            <input
+              type="submit"
+              name=""
+              id=""
+              onClick={() => setSearchValue(inputText)}
+            />
+
             {cardIsFetching ? (
               <div className={styles.loader}>
                 <Loader size={70} />
               </div>
             ) : (
               data?.objects.map((elem: any, index: any) => {
-                return (
-                  <Card
-                    key={index}
-                    id={elem.id}
-                    profession={elem.profession}
-                    firm_name={elem.firm_name}
-                    townTitle={elem.town?.title}
-                    typeOfWorkTitle={elem?.type_of_work.title}
-                    payment_from={elem?.payment_from}
-                    payment_to={elem?.payment_to}
-                    currency={elem?.currency}
-                  />
-                );
+                return <Card key={elem.id} data={elem} />;
               })
             )}
           </div>
