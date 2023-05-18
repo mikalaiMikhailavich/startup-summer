@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
-// import styles from "./Navbar.module.scss";
 import { NavLink } from "react-router-dom";
+import styles from "./NavBar.module.scss";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const navbarData: any = [
     {
@@ -20,10 +20,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
+    <nav className={styles.container}>
       {navbarData.map(
-        ({ id, value, path }: { id: any; value: any; path: any }) => (
-          <NavLink key={id.toString()} to={path}>
+        ({ id, value, path }: { id: number; value: string; path: string }) => (
+          <NavLink
+            key={id.toString()}
+            to={path}
+            className={({ isActive }: { isActive: boolean }): string =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
             {value}
           </NavLink>
         )

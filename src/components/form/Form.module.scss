@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 315px;
+  background-color: $color-white;
+  align-self: start;
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.formTitle {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.reset {
+  background: none;
+  outline: 0;
+  border: none;
+}

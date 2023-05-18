@@ -1,0 +1,25 @@
+.home {
+  display: flex;
+  min-height: 80vh;
+  gap: 30px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  gap: 12px;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  gap: 12px;
+}

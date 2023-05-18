@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+}
+
+.active {
+  color: blue;
+  font-weight: 500;
+}
